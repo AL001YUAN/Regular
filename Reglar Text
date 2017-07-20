@@ -1,0 +1,15 @@
+
+        ruleList.add("[A-Z]+");
+        ruleList.add("[a-z]+");
+        ruleList.add("[0-9]+");
+        ruleList
+            .add("[\\~\\`\\'\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\_\\+\\=\\{\\}\\[\\]\\|\\;\\:\"\\,\\?\\.\\<\\>\\/ \\\\]+");
+        if (!password
+            .matches("^[a-zA-Z][a-zA-Z0-9\\~\\`\\'\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\-\\_\\+\\=\\{\\}\\[\\]\\|\\;\\:\"\\,\\?\\.\\<\\>\\/ \\\\]+$"))
+            return false;
+        for (String rule : ruleList)
+            Pattern pat = Pattern.compile(rule);
+            Matcher m = pat.matcher(password);
+            if (!m.find())
+                return false;
+        return true;
